@@ -10,11 +10,7 @@ import { AuthService } from './../services/auth.service';
 })
 export class LoginComponent implements OnInit {
     loginForm!: FormGroup;
-    hasError = false;
 
-    /**
-     * Constructor
-     */
     constructor(
         private _authService: AuthService,
         private fb: FormBuilder,
@@ -22,13 +18,6 @@ export class LoginComponent implements OnInit {
     ) {
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
     ngOnInit(): void {
         this.initForm();
     }
@@ -45,12 +34,8 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        // Disable the form
         this.loginForm.disable();
 
-        // Hide the alert
-        // this.showAlert = false;
-debugger
         this._authService.login(this.loginForm.value)
             .subscribe((user: any) => {
                 if (user) {
@@ -58,12 +43,6 @@ debugger
                     this._router.navigateByUrl(redirectURL);
                 } else {
                     this.loginForm.enable();
-
-                    // this.showAlert = true;
-                    // this.alert = {
-                    //     type: 'error',
-                    //     message: 'Usuario o Password incorrecto'
-                    // };
                 }
             });
 

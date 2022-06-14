@@ -35,8 +35,7 @@ export class ConsultaEnviosComponent implements OnInit {
         return item.id || index;
     }
 
-    editarEnvio(envio: any): void {
-        debugger
+    editarEnvio(envio: any): void {        
         this.router.navigate(['envios/registro-envio', envio.id]);
     }
 

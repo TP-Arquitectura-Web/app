@@ -5,6 +5,8 @@
         color="accent">Envíos</button>
     <button *ngIf='(auth.accessToken)' class="links" [routerLink]="'/rutas/consulta-rutas'" mat-flat-button
         color="accent">Rutas</button>
+    <button *ngIf='(auth.accessToken)' class="links" [routerLink]="'/dashboard'" mat-flat-button
+        color="accent">Dashboard</button>
 
     <button *ngIf="(auth.accessToken)" class="links btnSalir" (click)="logout()" mat-flat-button
         color="warn">Salir</button>

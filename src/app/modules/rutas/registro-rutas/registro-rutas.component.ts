@@ -45,14 +45,13 @@ export class RegistroRutasComponent implements OnInit {
 
     getEnvios(): void {
         this.envioService.getEnvios().subscribe(response => {
-            debugger
             this.envios = response;
         })
     }
 
     createRutaForm(): void {
         this.rutasForm = this.fb.group({
-            envio: ['', Validators.required],            
+            envio: ['', Validators.required],
             driver: ['', Validators.required],
             estado: 'sin programar',
             notas: ''

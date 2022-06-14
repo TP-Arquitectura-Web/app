@@ -12,9 +12,7 @@ export class AuthService {
 
     constructor(
         private _httpClient: HttpClient
-    ) {
-
-    }
+    ) { }
 
     set accessToken(token: string) {
         localStorage.setItem('accessToken', token);
