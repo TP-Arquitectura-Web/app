@@ -1,0 +1,176 @@
+<div id="envios" fxLayout="column">
+    <div class="envios-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div>
+            <button class='btnVolver' [routerLink]="['/envios/consulta-envios']" mat-flat-button [color]="'warn'">
+                Volver
+            </button>
+            <button (click)="crearEnvio()" mat-flat-button [color]="'primary'">
+                {{txtBtnENvio}}
+            </button>
+        </div>
+
+        <form [formGroup]="enviosForm" #enviosNgForm="ngForm">
+
+            <div>
+                <h2>Servicio </h2>
+            </div>
+            <div fxFlex="0" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayout.sm="column"
+                fxLayoutGap="10px">
+
+                <mat-form-field>
+                    <mat-label>Servicio</mat-label>
+                    <mat-select [formControlName]="'servicio'">
+                        <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{servicio.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <h2>Datos Retiro </h2>
+            </div>
+
+            <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" fxLayout.sm="column"
+                formGroupName="retiro" fxLayoutGap="10px">
+
+                <mat-form-field>
+                    <mat-label>Nombre Retiro</mat-label>
+                    <input id="nombreRetiro" matInput [formControlName]="'nombreRetiro'">
+                    <mat-error *ngIf="enviosForm.get('retiro.nombreRetiro')?.hasError('required')">
+                        Nombre es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('retiro.nombreRetiro')?.hasError('required')">
+                        Por favor ingrese un nombre válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Apellido Retiro</mat-label>
+                    <input id="apellidoRetiro" matInput [formControlName]="'apellidoRetiro'">
+                    <mat-error *ngIf="enviosForm.get('retiro.apellidoRetiro')?.hasError('required')">
+                        Apellido es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('retiro.apellidoRetiro')?.hasError('required')">
+                        Por favor ingrese un apellido válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Dirección</mat-label>
+                    <input id="direccionRetiro" matInput [formControlName]="'direccionRetiro'">
+                    <mat-error *ngIf="enviosForm.get('retiro.direccionRetiro')?.hasError('required')">
+                        Direccion es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('retiro.direccionRetiro')?.hasError('required')">
+                        Por favor ingrese un domicilio válido!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" fxLayout.sm="column"
+                formGroupName="retiro" fxLayoutGap="10px">
+
+                <mat-form-field>
+                    <mat-label>Teléfono</mat-label>
+                    <input id="telefonoRetiro" matInput [formControlName]="'telefonoRetiro'">
+                    <mat-error *ngIf="enviosForm.get('retiro.telefonoRetiro')?.hasError('required')">
+                        Teléfono es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('retiro.telefonoRetiro')?.hasError('required')">
+                        Por favor ingrese un teléfono válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input id="emailRetiro" matInput [formControlName]="'emailRetiro'">
+                    <mat-error *ngIf="enviosForm.get('retiro.emailRetiro')?.hasError('required')">
+                        telefono es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('retiro.emailRetiro')?.hasError('required')">
+                        Por favor ingrese un email válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Notas</mat-label>
+                    <input id="notasRetiro" matInput [formControlName]="'notasRetiro'">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <h2>Datos Entrega </h2>
+            </div>
+
+            <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" fxLayout.sm="column"
+                formGroupName="entrega" fxLayoutGap="10px">
+
+                <mat-form-field #inputNombre>
+                    <mat-label>Nombre Entrega</mat-label>
+                    <input id="nombreEntrega" matInput [formControlName]="'nombreEntrega'">
+                    <mat-error *ngIf="enviosForm.get('entrega.nombreEntrega')?.hasError('required')">
+                        Nombre es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('entrega.nombreEntrega')?.hasError('required')">
+                        Por favor ingrese un nombre válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Apellido Entrega</mat-label>
+                    <input id="apellidoEntrega" matInput [formControlName]="'apellidoEntrega'">
+                    <mat-error *ngIf="enviosForm.get('entrega.apellidoEntrega')?.hasError('required')">
+                        Apellido es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('entrega.apellidoEntrega')?.hasError('required')">
+                        Por favor ingrese un apellido válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Dirección</mat-label>
+                    <input id="direccionEntrega" matInput [formControlName]="'direccionEntrega'">
+                    <mat-error *ngIf="enviosForm.get('entrega.direccionEntrega')?.hasError('required')">
+                        Direccion es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('entrega.direccionEntrega')?.hasError('required')">
+                        Por favor ingrese un domicilio válido!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" fxLayout.sm="column"
+                formGroupName="entrega" fxLayoutGap="10px">
+
+                <mat-form-field>
+                    <mat-label>Teléfono</mat-label>
+                    <input id="telefonoEntrega" matInput [formControlName]="'telefonoEntrega'">
+                    <mat-error *ngIf="enviosForm.get('entrega.telefonoEntrega')?.hasError('required')">
+                        Teléfono es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('entrega.telefonoEntrega')?.hasError('required')">
+                        Por favor ingrese un teléfono válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input id="emailEntrega" matInput [formControlName]="'emailEntrega'">
+                    <mat-error *ngIf="enviosForm.get('entrega.emailEntrega')?.hasError('required')">
+                        telefono es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="enviosForm.get('entrega.emailEntrega')?.hasError('required')">
+                        Por favor ingrese un email válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Notas</mat-label>
+                    <input id="notasEntrega" matInput [formControlName]="'notasEntrega'">
+                </mat-form-field>
+            </div>
+        </form>
+
+    </div>
+</div>

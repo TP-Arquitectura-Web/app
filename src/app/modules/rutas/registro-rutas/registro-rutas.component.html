@@ -1,0 +1,55 @@
+<div id="rutas" fxLayout="column">
+    <div class="rutas-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div>
+            <button class='btnVolver' [routerLink]="['/rutas/consulta-rutas']" mat-flat-button [color]="'warn'">
+                Volver
+            </button>
+            <button (click)="crearRuta()" mat-flat-button [color]="'primary'">
+                {{txtBtnRuta}}
+            </button>
+        </div>
+
+        <form [formGroup]="rutasForm" #rutasNgForm="ngForm">
+
+            <div>
+                <h2>Rutas</h2>
+            </div>
+            <div fxFlex="0" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayout.sm="column"
+                fxLayoutGap="10px">
+
+                <mat-form-field>
+                    <mat-label>Envíos</mat-label>
+                    <mat-select [formControlName]="'envio'">
+                        <mat-option *ngFor="let envio of envios" [value]="envio.id">{{envio.nroEnvio}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <h2>Datos Retiro </h2>
+            </div>
+
+            <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="start center" fxLayout.xs="column" fxLayout.sm="column"
+                fxLayoutGap="10px">
+
+                <mat-form-field>
+                    <mat-label>Driver</mat-label>
+                    <input id="driver" matInput [formControlName]="'driver'">
+                    <mat-error *ngIf="rutasForm.get('driver')?.hasError('required')">
+                        Driver es requerido!
+                    </mat-error>
+                    <mat-error *ngIf="rutasForm.get('driver')?.hasError('required')">
+                        Por favor ingrese un driver válido!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Notas</mat-label>
+                    <input id="notas" matInput [formControlName]="'notas'">
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>

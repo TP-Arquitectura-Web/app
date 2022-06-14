@@ -1,0 +1,79 @@
+<div id="envios" fxLayout="column">
+    <div class="envios-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div>
+            <button [routerLink]="'/envios/registro-envio'" mat-flat-button [color]="'primary'">
+                Agregar Envíos
+            </button>
+        </div>
+
+        <table mat-table matSort [dataSource]="enviosDataSource" [trackBy]="trackByFn" #enviosTable>
+
+            <ng-container matColumnDef="nroEnvio">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                    N° Envío
+                </th>
+                <td mat-cell *matCellDef="let envios">
+                    <span>
+                        {{envios.nroEnvio}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="servicio">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                    Servicio
+                </th>
+                <td mat-cell *matCellDef="let envios">
+                    <span>
+                        {{envios.servicio | uppercase}}
+                    </span>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="datosRetiro">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                    Datos Retiro
+                </th>
+                <td mat-cell *matCellDef="let envios">
+                    <span>
+                        {{envios.retiro.nombreRetiro | titlecase}} {{envios.retiro.apellidoRetiro | titlecase}}
+                        - {{envios.retiro.direccionRetiro | titlecase}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="datosEntrega">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                    Datos Entrega
+                </th>
+                <td mat-cell *matCellDef="let envios">
+                    <span>
+                        {{envios.entrega.nombreEntrega | titlecase}} {{envios.entrega.apellidoEntrega |
+                        titlecase}} - {{envios.entrega.direccionEntrega | titlecase}}
+                    </span>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                    Acciones
+                </th>
+                <td mat-cell *matCellDef="let envios">
+                    <button (click)="editarEnvio(envios)" mat-icon-button color="accent" matTooltip="Editar Envío">
+                        <span class="material-icons">
+                            edit
+                        </span>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="enviosTableColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: enviosTableColumns;">
+            </tr>
+            <tr mat-footer-row></tr>
+        </table>
+
+    </div>
+</div>
